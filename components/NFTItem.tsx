@@ -3,11 +3,15 @@ const NFTItem = ({
   NFTName,
   NFTPrice,
   buyClick,
+  itemIndex,
+  count,
 }: {
   NFTImage: any;
   NFTName: string;
   NFTPrice: number;
   buyClick: Function;
+  itemIndex: number;
+  count: number;
 }) => {
   return (
     // <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md border border-blue-gray-100">
@@ -55,19 +59,20 @@ const NFTItem = ({
         />
 
         <div className="relative border border-gray-100 bg-white p-6">
-          <span className="whitespace-nowrap bg-[#134B70] px-3 py-1.5 text-md font-medium text-white">
+          {/* <span className="whitespace-nowrap bg-[#134B70] px-3 py-1.5 text-md font-medium text-white">
             {" "}
             New{" "}
-          </span>
+          </span> */}
+          <div className="flex items-center justify-between gap-4">
+            <h3 className="text-lg font-medium text-gray-900">{NFTName}</h3>
 
-          <h3 className="mt-4 text-lg font-medium text-gray-900">{NFTName}</h3>
-
-          <p className="mt-1.5 text-lg text-red-700">${NFTPrice}</p>
+            <p className="text-lg text-red-500">Remain {count}</p>
+          </div>
 
           <div className="mt-4">
             <button
               className="block w-full rounded bg-[#134B70] p-4 text-lg font-medium transition hover:scale-105 hover:bg-[#2f6992] text-white"
-              onClick={() => buyClick(NFTImage, NFTName, NFTPrice)}
+              onClick={() => buyClick(itemIndex)}
             >
               BUY NOW
             </button>

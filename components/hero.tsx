@@ -1,5 +1,8 @@
+"use client";
 import VideoThumb from "@/public/images/hero-image-01.jpg";
 import ModalVideo from "@/components/modal-video";
+import Link from "next/link";
+import { useContext } from "react";
 
 export default function Hero() {
   return (
@@ -59,12 +62,12 @@ export default function Hero() {
             </p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
-                <a
+                <Link
                   className="btn text-white bg-green-600 hover:bg-green-700 w-full mb-4 sm:w-auto sm:mb-0"
                   href="/market"
                 >
                   Getting started with GTV
-                </a>
+                </Link>
               </div>
               <div data-aos="fade-up" data-aos-delay="600">
                 <a

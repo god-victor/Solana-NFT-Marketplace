@@ -3,14 +3,9 @@ import "./css/style.css";
 import { Inter, Architects_Daughter } from "next/font/google";
 
 import Header from "@/components/ui/header";
-import Banner from "@/components/banner";
 import { ThirdwebProvider } from "thirdweb/react";
-import { Web3Provider } from "./hook/web3/useWeb3";
-//@ts-ignore
-// import { WagmiProvider } from "wagmi";
-import "@rainbow-me/rainbowkit/styles.css";
-import { Providers } from "./providers";
-
+import { WagmiProvider } from "wagmi";
+import { config } from "@/app/hook/useWagmi";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -40,14 +35,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${architects_daughter.variable} font-inter antialiased bg-gray-900 text-gray-200 tracking-tight`}
       >
-        <Providers>
-          {/* <ThirdwebProvider> */}
-          <div className="flex flex-col min-h-screen ">
-            <Header />
-            {children}
-          </div>
-          {/* </ThirdwebProvider> */}
-        </Providers>
+        <div className="flex flex-col min-h-screen overflow-hidden">
+          <ThirdwebProvider>
+            <WagmiProvider config={config}>
+              <Header />
+              {children}
+            </WagmiProvider>
+          </ThirdwebProvider>
+        </div>
       </body>
     </html>
   );
